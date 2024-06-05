@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager game;
 
-    public LevelNames currentLevel = LevelNames.MainMenu;
+    public LevelNames currentLevel = LevelNames.INTRO;
     public Scene currentScene;
-    LevelNames fromLevel = LevelNames.MainMenu;
+    LevelNames fromLevel = LevelNames.INTRO;
     public GameStates heldItem;
     
 
@@ -30,13 +30,8 @@ public class GameManager : MonoBehaviour
     public GameStates[] itemHotBar;
     public GameObject[] itemModels;
 
-    public GameObject spoiledLemonModel;
-    public Material lemonMat;
-    public Texture spoiledTex;
-
     public Texture2D crosshair;
     
-    private bool lemon_actually_spoiled = false;
     void Awake()
     {
         
@@ -44,13 +39,17 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(crosshair, Vector2.one / 2, CursorMode.ForceSoftware);
         
         game = this;
-        lemonMat.SetTexture("_MainTex", null);
         
         StartLoadingFirstScene();
         
-        Invoke("Game_Mode", 0.1f);
+        //Invoke("Game_Mode", 0.1f);
         
         
+    }
+
+    private void OnEnable()
+    {
+        Game_Mode();
     }
     // Start is called before the first frame update
     void Start()
@@ -74,10 +73,6 @@ public class GameManager : MonoBehaviour
             //Application.Quit();
         }
 
-        if(!lemon_actually_spoiled && CheckGameState(GameStates.SPOILED_LEMON))
-        {
-            SpoilLemon();
-        }
     }
 
     void FixedUpdate()
@@ -112,16 +107,6 @@ public class GameManager : MonoBehaviour
         {
             gameState.Add(state);
         }
-        
-    }
-
-    public void SpoilLemon()
-    {
-        itemModels[3] = spoiledLemonModel;
-        lemonMat.SetTexture("_MainTex", spoiledTex);
-        DisplayHeldItem();
-        lemon_actually_spoiled = true;
-        
         
     }
 
@@ -165,6 +150,7 @@ public class GameManager : MonoBehaviour
         }
         switch(heldItem)
         {
+            /*
             case GameStates.ITEM_LIFESAVER:
             {
                 currentItem = 
@@ -207,6 +193,7 @@ public class GameManager : MonoBehaviour
                     currentItem.transform.localRotation = Quaternion.identity;
                 break;
             }
+            */
             case GameStates.ITEM_NONE:
             {
                 currentItem = null;
@@ -270,19 +257,14 @@ public class GameManager : MonoBehaviour
 
     
 
-    void MovePlayerToSpawn()
+    public void MovePlayerToSpawn()
     {
-        
-        
+
         Transform playerSpawn = LevelManager.currentLevel.GetSpawn(fromLevel);
 
-        PlayerMovement.instance.transform.position = playerSpawn.position;
-        PlayerMovement.instance.playerCam.rotation = playerSpawn.rotation;
-
-        PlayerMovement.instance.rb.velocity = Vector3.zero;
-        
-        PlayerMovement.instance.enabled = true;
+        PlayerMovement.instance.ResetAt(playerSpawn);
     }
+
 
 
     #endregion SceneLoading

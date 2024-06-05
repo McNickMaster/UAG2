@@ -14,6 +14,7 @@ public class DebugUtil : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha2))
         {
             GameManager.game.AddState(GameStates.ITEM_TEDDY);
@@ -22,5 +23,6 @@ public class DebugUtil : MonoBehaviour
             GameManager.game.AddState(GameStates.ITEM_LEMOMN);
             GameManager.game.AddState(GameStates.ITEM_DRUGS);
         }
+        */
     }
 }

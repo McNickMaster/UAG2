@@ -6,7 +6,7 @@ using UAG.enums;
 
 public class LoadScene : Action
 {
-    public LevelNames levelName = LevelNames.Forest;
+    public LevelNames levelName = LevelNames.INTRO;
 
     public bool movePlayer = true;
 

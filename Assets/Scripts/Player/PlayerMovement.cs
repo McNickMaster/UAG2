@@ -2,6 +2,8 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
+
 namespace UAG.Player{
 public class PlayerMovement : MonoBehaviour
 {
@@ -101,6 +103,17 @@ public class PlayerMovement : MonoBehaviour
       
         //Crouching
         
+    }
+
+    public void ResetAt(Transform origin)
+        {
+
+        rb.position = origin.position;
+        playerCam.rotation = origin.rotation;
+
+        rb.velocity = Vector3.zero;
+
+        instance.enabled = true;
     }
 
     private void StartCrouch() {

@@ -19,6 +19,8 @@ public class EndingManager : MonoBehaviour
 
     void Awake()
     {
+
+        /*
         if(GameManager.game.CheckGameState(UAG.enums.GameStates.ADDICT_LEMON) || GameManager.game.CheckGameState(UAG.enums.GameStates.ITEM_LEMONADE))
         {
             ourEnding = Endings.LEMONADE;
@@ -66,6 +68,7 @@ public class EndingManager : MonoBehaviour
             }
 
         }
+        */
         LoadJson();
 
         title.text = ourText.title;

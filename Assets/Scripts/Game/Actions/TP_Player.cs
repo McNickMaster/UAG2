@@ -27,10 +27,7 @@ public class TP_Player : Action
 
     public void CheckHeldItem()
     {
-        if (GameManager.game.heldItem == GameStates.ITEM_LEMONADE)
-        {
-            loadMeadowAction.Action_Start();
-        }
+        
     }
 
     public override void Action_Start()

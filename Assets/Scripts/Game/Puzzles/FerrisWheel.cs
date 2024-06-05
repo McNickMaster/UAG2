@@ -19,6 +19,7 @@ public class FerrisWheel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(GameManager.game.CheckGameState(GameStates.FERRIS_STOPPED))
         {
             lerping = true;
@@ -40,5 +41,6 @@ public class FerrisWheel : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
             lerping = false;
         }
+        */
     }
 }

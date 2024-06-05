@@ -77,7 +77,7 @@ public class Bells : MonoBehaviour
     void Finish()
     {
         puzzle_solved = true;
-        GameManager.game.AddState(GameStates.BELLS);
+        //GameManager.game.AddState(GameStates.BELLS);
         myAction.Action_Start();
         myAction2.Action_Start();
         myAction3.Action_Start();

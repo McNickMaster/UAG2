@@ -23,6 +23,11 @@ public class LevelManager : MonoBehaviour
         
 
     }
+
+    private void OnEnable()
+    {
+
+    }
     // Start is called before the first frame update
     void Start()
     {
